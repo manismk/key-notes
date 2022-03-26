@@ -58,6 +58,10 @@ body {
   width: fit-content;
 }
 
+.link--primary {
+  font-weight: 600;
+}
+
 .btn--primary,
 .btn--secondary:hover {
   background-color: var(--primary--color);
