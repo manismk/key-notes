@@ -1,0 +1,46 @@
+.login--container {
+  max-width: 25rem;
+  padding: 2rem 1rem;
+  background-color: var(--white);
+  margin: 5rem auto;
+  border-radius: 5px;
+  box-shadow: 2px 3px 10px 0px rgb(0 0 0 / 20%);
+}
+
+.input--label {
+  background-color: var(--white);
+}
+
+.remember--container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.input--container {
+  max-width: 100%;
+}
+
+.input--container input + button {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.8rem;
+}
+
+.signup--name--container {
+  display: flex;
+}
+
+.signup--name--container .input--container {
+  margin-bottom: 0;
+}
+
+@media only screen and (max-width: 500px) {
+  .login--container {
+    margin: 2rem;
+  }
+  .remember--container {
+    flex-direction: column;
+  }
+}
