@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Pacifico&display=swap");
+
+:root {
+  --bg-white: #fdfdfd;
+  --primary--color: #d14600;
+  --primary--light: #ffedd5;
+}
+
+body {
+  font-family: "inter", sans-serif;
+  background-color: var(--bg-white);
+}
+
+.container {
+  max-width: 100rem;
+  margin: 4rem auto;
+}
+
+.content--container {
+  height: 100%;
+}
+
+.heading--1 {
+  font-size: 3rem;
+}
+
+.heading--1 span,
+.link--primary {
+  color: var(--primary--color);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  margin: 1rem 3rem;
+}
+
+.content--description {
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.content--description .tagline {
+  font-weight: 600;
+}
+
+.cta--container {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+.cta--container .btn {
+  width: fit-content;
+}
+
+.btn--primary,
+.btn--secondary:hover {
+  background-color: var(--primary--color);
+  border-color: var(--primary--color);
+  color: var(--bg-white);
+}
+
+.btn--primary:hover,
+.btn--secondary {
+  background-color: var(--primary--light);
+  color: var(--primary--color);
+}
