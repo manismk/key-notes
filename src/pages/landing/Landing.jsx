@@ -1,8 +1,8 @@
-import "./home.css";
-import { heroImg } from "../../assets/";
+import "./landing.css";
+import { heroImg } from "../../assets";
 import { Link, useNavigate } from "react-router-dom";
 
-export const Home = () => {
+export const Landing = () => {
   const navigate = useNavigate();
   return (
     <div className="container grid grid--2--cols">
