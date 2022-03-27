@@ -3,6 +3,7 @@ import { useState } from "react";
 import "./auth.css";
 import { handleLoginValidation } from "../../utils";
 import { InputTextBox, InputPassword } from "../../components";
+import { useAuth } from "../../context/auth-context";
 
 const Login = () => {
   const [userData, setUserData] = useState({
@@ -11,6 +12,8 @@ const Login = () => {
     mailError: "",
     passwordError: "",
   });
+
+  const { signIn } = useAuth();
 
   const loginHandler = () => {
     const { mailError, passwordError } = handleLoginValidation(
@@ -26,7 +29,7 @@ const Login = () => {
       }));
     }
     if (mailError.length === 0 && passwordError.length === 0) {
-      //will add login functionality
+      signIn(userData.userMail, userData.password);
     }
   };
 
