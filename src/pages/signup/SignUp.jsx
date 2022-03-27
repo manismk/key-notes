@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { handleSignUpValidation } from "../../utils";
 import { InputTextBox, InputPassword } from "../../components";
+import { useAuth } from "../../context/auth-context";
 
 export const SignUp = () => {
   const [userData, setUserData] = useState({
@@ -16,6 +17,8 @@ export const SignUp = () => {
     confirmPassword: "",
     confirmPasswordError: "",
   });
+
+  const { signUp } = useAuth();
 
   const signUpHandler = () => {
     const {
@@ -55,7 +58,7 @@ export const SignUp = () => {
       lastNameError.length === 0 &&
       confirmPasswordError.length === 0
     ) {
-      //will handle signup functionality
+      signUp(userData.userMail, userData.password);
     }
   };
 
