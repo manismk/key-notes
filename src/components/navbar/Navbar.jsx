@@ -16,7 +16,10 @@ export const Navbar = () => {
     <div className={`${showSidebar ? "open" : ""}`}>
       <header className="nav--container container--100">
         <div className="logo">
-          <button class="btn icon--btn hamburger m-r-1" onClick={toggleSidebar}>
+          <button
+            className="btn icon--btn hamburger m-r-1"
+            onClick={toggleSidebar}
+          >
             <Menu />
           </button>
 

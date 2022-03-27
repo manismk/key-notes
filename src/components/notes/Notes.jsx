@@ -17,25 +17,25 @@ export const Notes = () => {
         veritatis porro maxime natus iure dicta nam vitae. Placeat quod enim
         earum est cum! Sit aspernatur quos molestiae iste pariatur?
       </div>
-      <button class="btn icon--btn pin--btn">
+      <button className="btn icon--btn pin--btn">
         <PushPin />
       </button>
       <div className="notes--toolbar">
         <div></div>
         <div className="tools--container">
-          <button class="btn icon--btn ">
+          <button className="btn icon--btn ">
             <Label />
           </button>
-          <button class="btn icon--btn ">
+          <button className="btn icon--btn ">
             <ColorLens />
           </button>
-          <button class="btn icon--btn ">
+          <button className="btn icon--btn ">
             <Edit />
           </button>
-          <button class="btn icon--btn ">
+          <button className="btn icon--btn ">
             <Archive />
           </button>
-          <button class="btn icon--btn ">
+          <button className="btn icon--btn ">
             <Delete />
           </button>
         </div>
