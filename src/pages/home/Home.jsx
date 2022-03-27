@@ -1,8 +1,9 @@
 import "./home.css";
 import { heroImg } from "../../assets/";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Home = () => {
+  const navigate = useNavigate();
   return (
     <div className="container grid grid--2--cols">
       <div className="content--container">
@@ -18,7 +19,12 @@ export const Home = () => {
             </p>
           </div>
           <div className="cta--container">
-            <button className="btn btn--primary">
+            <button
+              className="btn btn--primary"
+              onClick={() => {
+                navigate("/signup");
+              }}
+            >
               Start Note taking journey
             </button>
             <Link className="link link--primary m-r-1" to="/login">
