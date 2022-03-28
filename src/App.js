@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
-import { Landing, Login, NotesHome, SignUp } from "./pages";
+import { PrivateRoute } from "./components";
+import { Landing, Login, NotesHome, Profile, SignUp } from "./pages";
 
 const App = () => {
   return (
@@ -8,7 +9,10 @@ const App = () => {
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signUp" element={<SignUp />} />
-        <Route path="/app/notes" element={<NotesHome />} />
+        <Route element={<PrivateRoute />}>
+          <Route path="/app/notes" element={<NotesHome />} />
+          <Route path="/profile" element={<Profile />} />
+        </Route>
       </Routes>
     </div>
   );

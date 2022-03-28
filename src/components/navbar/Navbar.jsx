@@ -31,7 +31,9 @@ export const Navbar = () => {
           <button className="btn btn--primary " onClick={() => setForm(true)}>
             Create Note
           </button>
-          <Person className="icon" />
+          <Link to="/profile">
+            <Person className="icon" />
+          </Link>
         </div>
       </header>
       <div className={`${showSidebar ? "open" : ""}`}>
