@@ -1,6 +1,8 @@
+import { notesAction } from "../constants";
+
 export const notesReducer = (state, action) => {
   switch (action.type) {
-    case "ADD_NOTES":
+    case notesAction.ADD_NOTES:
       return {
         ...state,
         notes: [

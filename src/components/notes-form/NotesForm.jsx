@@ -3,6 +3,7 @@ import "./notesForm.css";
 import "react-quill/dist/quill.snow.css";
 import { useState } from "react";
 import { useNotes } from "../../context";
+import { notesAction } from "../../constants";
 
 const modules = {
   toolbar: [
@@ -59,7 +60,7 @@ export const NotesForm = ({ closeForm }) => {
               className="btn btn--primary"
               onClick={() => {
                 notesDispatch({
-                  type: "ADD_NOTES",
+                  type: notesAction.ADD_NOTES,
                   payload: {
                     title: notesData.title,
                     notes: notesData.enteredNotes,
