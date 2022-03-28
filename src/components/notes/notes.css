@@ -29,3 +29,12 @@
   top: 1rem;
   right: 1rem;
 }
+
+.notes * {
+  word-break: break-all;
+}
+
+.notes ul,
+.notes ol {
+  margin-left: 1rem;
+}

@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import { Sidebar } from "../";
+import { Sidebar, NotesForm } from "../";
 import "./navbar.css";
 import { useState } from "react";
 import { Person, Menu } from "@mui/icons-material";
-import {} from "@mui/material";
 
 export const Navbar = () => {
   const [showSidebar, setSidebar] = useState(false);
+  const [showForm, setForm] = useState(false);
 
   const toggleSidebar = () => {
     setSidebar((prev) => !prev);
@@ -28,7 +28,9 @@ export const Navbar = () => {
           </Link>
         </div>
         <div className="cta--container">
-          <button className="btn btn--primary ">Create Note</button>
+          <button className="btn btn--primary " onClick={() => setForm(true)}>
+            Create Note
+          </button>
           <Person className="icon" />
         </div>
       </header>
@@ -36,6 +38,13 @@ export const Navbar = () => {
         <Sidebar />
         {showSidebar && <div className="overlay" onClick={toggleSidebar}></div>}
       </div>
+      {showForm && (
+        <NotesForm
+          closeForm={() => {
+            setForm(false);
+          }}
+        />
+      )}
     </>
   );
 };

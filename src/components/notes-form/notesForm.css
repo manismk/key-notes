@@ -1,0 +1,38 @@
+.form--container {
+  z-index: 30;
+  width: 60%;
+}
+
+.form--container .input--container {
+  margin: 0;
+  margin-bottom: 1rem;
+}
+
+.editor {
+  height: 15rem;
+  overflow-y: auto;
+}
+
+.editor .quill {
+  height: 60%;
+}
+.overlay-notes {
+  z-index: 28;
+}
+
+.form--cta {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form--cta div {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+@media only screen and (max-width: 600px) {
+  .form--container {
+    width: 85%;
+  }
+}
