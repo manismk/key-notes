@@ -3,7 +3,7 @@ import { Landing, Login, NotesHome, SignUp } from "./pages";
 
 const App = () => {
   return (
-    <div className="App">
+    <div className="App container--100">
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />

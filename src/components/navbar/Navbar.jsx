@@ -13,8 +13,8 @@ export const Navbar = () => {
   };
 
   return (
-    <div className={`${showSidebar ? "open" : ""}`}>
-      <header className="nav--container container--100">
+    <>
+      <header className="nav--container">
         <div className="logo">
           <button
             className="btn icon--btn hamburger m-r-1"
@@ -32,8 +32,10 @@ export const Navbar = () => {
           <Person className="icon" />
         </div>
       </header>
-      <Sidebar />
-      {showSidebar && <div className="overlay" onClick={toggleSidebar}></div>}
-    </div>
+      <div className={`${showSidebar ? "open" : ""}`}>
+        <Sidebar />
+        {showSidebar && <div className="overlay" onClick={toggleSidebar}></div>}
+      </div>
+    </>
   );
 };

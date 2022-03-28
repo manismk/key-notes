@@ -1,9 +1,11 @@
 .nav--container {
+  position: sticky;
+  top: 0;
+  display: flex;
   justify-content: space-between;
   background-color: var(--white);
   color: var(--black);
   z-index: 25;
-  position: relative;
   box-shadow: 0px 1px 6px -2px rgb(0 0 0 / 40%);
 }
 
