@@ -3,7 +3,7 @@ import "./notesForm.css";
 import "react-quill/dist/quill.snow.css";
 import { useState } from "react";
 import { useAuth } from "../../context";
-import { addNotes } from "../../utils/";
+import { addNotes, handleNotesValidation } from "../../utils/";
 
 const modules = {
   toolbar: [
@@ -16,6 +16,7 @@ const modules = {
 const initialData = {
   title: "",
   enteredNotes: "",
+  error: "",
 };
 
 export const NotesForm = ({ closeForm }) => {
@@ -51,7 +52,7 @@ export const NotesForm = ({ closeForm }) => {
           />
         </div>
         <div className="form--cta">
-          <div></div>
+          <div>{notesData.error}</div>
           <div>
             <button className="btn btn--secondary" onClick={closeForm}>
               Cancel
@@ -59,8 +60,17 @@ export const NotesForm = ({ closeForm }) => {
             <button
               className="btn btn--primary"
               onClick={() => {
-                addNotes(notesData, user.uid);
-                closeForm();
+                const { error } = handleNotesValidation(
+                  notesData.title,
+                  notesData.enteredNotes
+                );
+                if (error.length) {
+                  setNotesData((prev) => ({ ...prev, error: error }));
+                }
+                if (error.length === 0) {
+                  addNotes(notesData, user.uid);
+                  closeForm();
+                }
               }}
             >
               Add Note
