@@ -7,16 +7,13 @@ import {
   PushPin,
 } from "@mui/icons-material";
 import "./notes.css";
+import parse from "html-react-parser";
 
-export const Notes = () => {
+export const Notes = ({ note }) => {
   return (
     <div className="notes">
-      <div className="notes--title">Title</div>
-      <div className="notes--content">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi ipsa
-        veritatis porro maxime natus iure dicta nam vitae. Placeat quod enim
-        earum est cum! Sit aspernatur quos molestiae iste pariatur?
-      </div>
+      <div className="notes--title">{note.title}</div>
+      <div className="notes--content">{parse(note.notes)}</div>
       <button className="btn icon--btn pin--btn">
         <PushPin />
       </button>
