@@ -13,7 +13,7 @@ export const Notes = ({ note }) => {
   return (
     <div className="notes">
       <div className="notes--title">{note.title}</div>
-      <div className="notes--content">{parse(note.notes)}</div>
+      <div className="notes--content">{parse(note.enteredNotes)}</div>
       <button className="btn icon--btn pin--btn">
         <PushPin />
       </button>

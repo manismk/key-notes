@@ -2,8 +2,8 @@ import ReactQuill from "react-quill";
 import "./notesForm.css";
 import "react-quill/dist/quill.snow.css";
 import { useState } from "react";
-import { useNotes } from "../../context";
-import { notesAction } from "../../constants";
+import { useAuth } from "../../context";
+import { addNotes } from "../../utils/";
 
 const modules = {
   toolbar: [
@@ -20,7 +20,7 @@ const initialData = {
 
 export const NotesForm = ({ closeForm }) => {
   const [notesData, setNotesData] = useState(initialData);
-  const { notesDispatch } = useNotes();
+  const { user } = useAuth();
 
   return (
     <>
@@ -59,13 +59,7 @@ export const NotesForm = ({ closeForm }) => {
             <button
               className="btn btn--primary"
               onClick={() => {
-                notesDispatch({
-                  type: notesAction.ADD_NOTES,
-                  payload: {
-                    title: notesData.title,
-                    notes: notesData.enteredNotes,
-                  },
-                });
+                addNotes(notesData, user.uid);
                 closeForm();
               }}
             >
