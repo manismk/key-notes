@@ -1,4 +1,5 @@
 .form--container {
+  position: fixed;
   z-index: 30;
   width: 60%;
 }
@@ -16,6 +17,15 @@
 .editor .quill {
   height: 60%;
 }
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
 .overlay-notes {
   z-index: 28;
 }
