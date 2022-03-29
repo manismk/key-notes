@@ -1,6 +1,5 @@
 import {
   Archive,
-  ColorLens,
   Delete,
   Edit,
   Label,
@@ -11,12 +10,10 @@ import "./notes.css";
 import parse from "html-react-parser";
 import { toggleIsPinned } from "../../utils";
 import { useAuth } from "../../context";
-import { ColorContainer } from "./components/ColorContainer";
-import { useState } from "react";
+import { ColorButton } from "../";
 
 export const Notes = ({ note }) => {
   const { user } = useAuth();
-  const [showColor, setShowColor] = useState(false);
 
   return (
     <div className={`notes bg--${note.color}`}>
@@ -34,16 +31,7 @@ export const Notes = ({ note }) => {
           <button className="btn icon--btn ">
             <Label />
           </button>
-          <div
-            className="color--wrapper"
-            onMouseOver={() => setShowColor(true)}
-            onMouseLeave={() => setShowColor(false)}
-          >
-            <button className="btn icon--btn ">
-              <ColorLens />
-            </button>
-            {showColor && <ColorContainer uid={user.uid} id={note.id} />}
-          </div>
+          <ColorButton uid={user.uid} noteId={note.id} isFromForm={false} />
           <button className="btn icon--btn ">
             <Edit />
           </button>

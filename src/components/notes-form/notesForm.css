@@ -35,10 +35,17 @@
   justify-content: space-between;
 }
 
-.form--cta div {
+.form--cta .toolbar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.form--cta .cta--container {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  flex-direction: row;
 }
 
 @media only screen and (max-width: 600px) {

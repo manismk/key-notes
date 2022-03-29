@@ -9,7 +9,7 @@ export const addNotes = (notesData, uid) => {
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       isPinned: notesData.isPinned,
       isArchived: false,
-      color: "white",
+      color: notesData.color,
     });
   } catch (e) {
     console.error("Error adding document: ", e);
