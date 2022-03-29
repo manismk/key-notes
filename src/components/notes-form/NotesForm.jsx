@@ -22,6 +22,19 @@ const initialData = {
 export const NotesForm = ({ closeForm }) => {
   const [notesData, setNotesData] = useState(initialData);
   const { user } = useAuth();
+  const submitForm = () => {
+    const error = handleNotesValidation(
+      notesData.title,
+      notesData.enteredNotes
+    );
+    if (error.length) {
+      setNotesData((prev) => ({ ...prev, error: error }));
+    }
+    if (error.length === 0) {
+      addNotes(notesData, user.uid);
+      closeForm();
+    }
+  };
 
   return (
     <>
@@ -60,17 +73,7 @@ export const NotesForm = ({ closeForm }) => {
             <button
               className="btn btn--primary"
               onClick={() => {
-                const { error } = handleNotesValidation(
-                  notesData.title,
-                  notesData.enteredNotes
-                );
-                if (error.length) {
-                  setNotesData((prev) => ({ ...prev, error: error }));
-                }
-                if (error.length === 0) {
-                  addNotes(notesData, user.uid);
-                  closeForm();
-                }
+                submitForm();
               }}
             >
               Add Note

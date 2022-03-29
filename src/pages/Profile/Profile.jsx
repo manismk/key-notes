@@ -17,7 +17,7 @@ export const Profile = () => {
             />
           </div>
 
-          {user && user ? (
+          {user ? (
             <div>
               <div className="email--container">
                 <p className="email--label">Email</p>
