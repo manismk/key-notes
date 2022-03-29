@@ -33,7 +33,7 @@
   display: none;
 }
 
-.cta--container {
+.nav--container .cta--container {
   display: flex;
   align-items: center;
   gap: 1rem;

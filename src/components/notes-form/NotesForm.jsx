@@ -2,8 +2,8 @@ import ReactQuill from "react-quill";
 import "./notesForm.css";
 import "react-quill/dist/quill.snow.css";
 import { useState } from "react";
-import { useNotes } from "../../context";
-import { notesAction } from "../../constants";
+import { useAuth } from "../../context";
+import { addNotes, handleNotesValidation } from "../../utils/";
 
 const modules = {
   toolbar: [
@@ -16,11 +16,25 @@ const modules = {
 const initialData = {
   title: "",
   enteredNotes: "",
+  error: "",
 };
 
 export const NotesForm = ({ closeForm }) => {
   const [notesData, setNotesData] = useState(initialData);
-  const { notesDispatch } = useNotes();
+  const { user } = useAuth();
+  const submitForm = () => {
+    const error = handleNotesValidation(
+      notesData.title,
+      notesData.enteredNotes
+    );
+    if (error.length) {
+      setNotesData((prev) => ({ ...prev, error: error }));
+    }
+    if (error.length === 0) {
+      addNotes(notesData, user.uid);
+      closeForm();
+    }
+  };
 
   return (
     <>
@@ -51,7 +65,7 @@ export const NotesForm = ({ closeForm }) => {
           />
         </div>
         <div className="form--cta">
-          <div></div>
+          <div>{notesData.error}</div>
           <div>
             <button className="btn btn--secondary" onClick={closeForm}>
               Cancel
@@ -59,14 +73,7 @@ export const NotesForm = ({ closeForm }) => {
             <button
               className="btn btn--primary"
               onClick={() => {
-                notesDispatch({
-                  type: notesAction.ADD_NOTES,
-                  payload: {
-                    title: notesData.title,
-                    notes: notesData.enteredNotes,
-                  },
-                });
-                closeForm();
+                submitForm();
               }}
             >
               Add Note

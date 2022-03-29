@@ -6,6 +6,7 @@ const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -15,6 +16,7 @@ const AuthProvider = ({ children }) => {
       } else {
         setUser(false);
       }
+      setLoading(false);
     });
 
     return () => unsubscribe();
@@ -25,7 +27,7 @@ const AuthProvider = ({ children }) => {
       .createUserWithEmailAndPassword(email, password)
       .then((response) => {
         setUser(response.user);
-        navigate("/");
+        navigate("/app/notes");
       })
       .catch((e) => {
         console.log("Error in signUp", e);
@@ -37,7 +39,7 @@ const AuthProvider = ({ children }) => {
       .signInWithEmailAndPassword(email, password)
       .then((response) => {
         setUser(response.user);
-        navigate("/");
+        navigate("/app/notes");
       })
       .catch((e) => {
         console.log("Error in signIn", e);
@@ -45,14 +47,19 @@ const AuthProvider = ({ children }) => {
   };
 
   const signOut = () => {
-    return auth.signOut().catch((e) => {
-      console.log("Error in signOut", e);
-    });
+    return auth
+      .signOut()
+      .then(() => {
+        navigate("/login");
+      })
+      .catch((e) => {
+        console.log("Error in signOut", e);
+      });
   };
 
   return (
     <AuthContext.Provider value={{ user, signUp, signIn, signOut }}>
-      {children}
+      {!loading && children}
     </AuthContext.Provider>
   );
 };

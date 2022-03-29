@@ -1,15 +1,32 @@
-import { createContext, useReducer, useContext } from "react";
-import { notesReducer } from "../reducer/notesReducer";
+import { createContext, useContext, useEffect, useState } from "react";
+import { db } from "../firebase";
+
+import { useAuth } from "./";
 
 const NotesContext = createContext();
 
 const NotesProvider = ({ children }) => {
-  const [notesState, notesDispatch] = useReducer(notesReducer, { notes: [] });
+  const { user } = useAuth();
+  const [notes, setNotes] = useState([]);
+
+  useEffect(() => {
+    try {
+      db.collection(`users/${user.uid}/notes`).onSnapshot((querySnapshot) => {
+        setNotes(
+          querySnapshot.docs.map((note) => ({
+            id: note.id,
+            enteredNotes: note.data().enteredNotes,
+            title: note.data().title,
+          }))
+        );
+      });
+    } catch (e) {
+      console.log("Error in getting initial notes data", e);
+    }
+  }, [user.uid]);
 
   return (
-    <NotesContext.Provider value={{ notesState, notesDispatch }}>
-      {children}
-    </NotesContext.Provider>
+    <NotesContext.Provider value={{ notes }}>{children}</NotesContext.Provider>
   );
 };
 
