@@ -7,7 +7,7 @@ export const OtherNotes = () => {
     <>
       <h2 className="text--center">Other Notes</h2>
       {notes
-        .filter((note) => !note.isPinned !== false)
+        .filter((note) => !note.isPinned)
         .map((note) => (
           <Notes key={note.id} note={note} />
         ))}
