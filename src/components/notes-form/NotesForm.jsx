@@ -4,6 +4,7 @@ import "react-quill/dist/quill.snow.css";
 import { useState } from "react";
 import { useAuth } from "../../context";
 import { addNotes, handleNotesValidation } from "../../utils/";
+import { PushPin, PushPinOutlined } from "@mui/icons-material";
 
 const modules = {
   toolbar: [
@@ -16,6 +17,7 @@ const modules = {
 const initialData = {
   title: "",
   enteredNotes: "",
+  isPinned: false,
   error: "",
 };
 
@@ -39,6 +41,17 @@ export const NotesForm = ({ closeForm }) => {
   return (
     <>
       <div className="form--container modal">
+        <button
+          className="btn icon--btn icon--badge pin--btn"
+          onClick={() => {
+            setNotesData((prev) => ({
+              ...prev,
+              isPinned: !notesData.isPinned,
+            }));
+          }}
+        >
+          {notesData.isPinned ? <PushPin /> : <PushPinOutlined />}
+        </button>
         <div className="input--container">
           <label htmlFor="notesTitle" className="input--label">
             Title

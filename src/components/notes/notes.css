@@ -38,3 +38,19 @@
 .notes ol {
   margin-left: 1rem;
 }
+
+.bg--white {
+  background-color: var(--white);
+}
+
+.bg--red {
+  background-color: var(--danger-light);
+}
+
+.bg--green {
+  background-color: var(--success-light);
+}
+
+.bg--yellow {
+  background-color: var(--alert-light);
+}
