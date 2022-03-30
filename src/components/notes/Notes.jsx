@@ -1,21 +1,29 @@
 import {
   Archive,
-  ColorLens,
   Delete,
   Edit,
   Label,
   PushPin,
+  PushPinOutlined,
 } from "@mui/icons-material";
 import "./notes.css";
 import parse from "html-react-parser";
+import { toggleIsPinned } from "../../utils";
+import { useAuth } from "../../context";
+import { ColorButton } from "../";
 
 export const Notes = ({ note }) => {
+  const { user } = useAuth();
+
   return (
-    <div className="notes">
+    <div className={`notes bg--${note.color}`}>
       <div className="notes--title">{note.title}</div>
       <div className="notes--content">{parse(note.enteredNotes)}</div>
-      <button className="btn icon--btn pin--btn">
-        <PushPin />
+      <button
+        className="btn icon--btn pin--btn"
+        onClick={() => toggleIsPinned(note.isPinned, user.uid, note.id)}
+      >
+        {note.isPinned ? <PushPin /> : <PushPinOutlined />}
       </button>
       <div className="notes--toolbar">
         <div></div>
@@ -23,9 +31,7 @@ export const Notes = ({ note }) => {
           <button className="btn icon--btn ">
             <Label />
           </button>
-          <button className="btn icon--btn ">
-            <ColorLens />
-          </button>
+          <ColorButton uid={user.uid} noteId={note.id} isFromForm={false} />
           <button className="btn icon--btn ">
             <Edit />
           </button>

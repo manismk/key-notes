@@ -17,6 +17,8 @@ const NotesProvider = ({ children }) => {
             id: note.id,
             enteredNotes: note.data().enteredNotes,
             title: note.data().title,
+            isPinned: note.data().isPinned,
+            color: note.data().color,
           }))
         );
       });
