@@ -11,9 +11,12 @@ import parse from "html-react-parser";
 import { toggleIsPinned } from "../../utils";
 import { useAuth } from "../../context";
 import { ColorButton } from "../";
+import { NotesForm } from "../";
+import { useState } from "react";
 
 export const Notes = ({ note }) => {
   const { user } = useAuth();
+  const [showForm, setForm] = useState(false);
 
   return (
     <div className={`notes bg--${note.color}`}>
@@ -32,9 +35,18 @@ export const Notes = ({ note }) => {
             <Label />
           </button>
           <ColorButton uid={user.uid} noteId={note.id} isFromForm={false} />
-          <button className="btn icon--btn ">
+          <button className="btn icon--btn " onClick={() => setForm(true)}>
             <Edit />
           </button>
+          {showForm && (
+            <NotesForm
+              isFromEdit={true}
+              closeForm={() => {
+                setForm(false);
+              }}
+              editNoteData={note}
+            />
+          )}
           <button className="btn icon--btn ">
             <Archive />
           </button>
