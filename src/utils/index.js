@@ -6,3 +6,6 @@ export { addNotes } from "./addNotes";
 export { handleNotesValidation } from "./handleNotesValidation";
 export { toggleIsPinned } from "./toggleIsPinned";
 export { handleBgColorChange } from "./handleBgColorChange";
+export { updateNotes } from "./updateNotes";
+export { archiveNote } from "./archiveNote";
+export { unArchiveNote } from "./unArchiveNote";

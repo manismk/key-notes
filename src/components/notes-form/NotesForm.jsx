@@ -1,9 +1,9 @@
 import ReactQuill from "react-quill";
 import "./notesForm.css";
 import "react-quill/dist/quill.snow.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../../context";
-import { addNotes, handleNotesValidation } from "../../utils/";
+import { addNotes, handleNotesValidation, updateNotes } from "../../utils/";
 import { Label, PushPin, PushPinOutlined } from "@mui/icons-material";
 import { ColorButton } from "../color-button/ColorButton";
 
@@ -23,9 +23,14 @@ const initialData = {
   error: "",
 };
 
-export const NotesForm = ({ closeForm }) => {
+export const NotesForm = ({ closeForm, isFromEdit, editNoteData }) => {
   const [notesData, setNotesData] = useState(initialData);
   const { user } = useAuth();
+  useEffect(() => {
+    if (isFromEdit) {
+      setNotesData(editNoteData);
+    }
+  }, []);
   const submitForm = () => {
     const error = handleNotesValidation(
       notesData.title,
@@ -36,7 +41,8 @@ export const NotesForm = ({ closeForm }) => {
       alert(error); // change to toast later
     }
     if (error.length === 0) {
-      addNotes(notesData, user.uid);
+      !isFromEdit && addNotes(notesData, user.uid);
+      isFromEdit && updateNotes(notesData, user.uid);
       closeForm();
     }
   };
@@ -99,7 +105,7 @@ export const NotesForm = ({ closeForm }) => {
                 submitForm();
               }}
             >
-              Add Note
+              {isFromEdit ? "Update" : "Add"} Note
             </button>
           </div>
         </div>

@@ -8,3 +8,4 @@ export { PrivateRoute } from "./PrivateRoute/PrivateRoute";
 export { PinnedNotes } from "./pinned-notes/PinnedNotes";
 export { OtherNotes } from "./other-notes/OtherNotes";
 export { ColorButton } from "./color-button/ColorButton";
+export { OtherNote } from "./otherNote/OtherNote";
