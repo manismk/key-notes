@@ -1,6 +1,14 @@
 import { Route, Routes } from "react-router-dom";
 import { PrivateRoute } from "./components";
-import { Archive, Landing, Login, NotesHome, Profile, SignUp } from "./pages";
+import {
+  Archive,
+  Landing,
+  Login,
+  NotesHome,
+  Profile,
+  SignUp,
+  Trash,
+} from "./pages";
 
 const App = () => {
   return (
@@ -12,7 +20,7 @@ const App = () => {
         <Route element={<PrivateRoute />}>
           <Route path="/app/notes" element={<NotesHome />} />
           <Route path="/app/archive" element={<Archive />} />
-
+          <Route path="/app/trash" element={<Trash />} />
           <Route path="/profile" element={<Profile />} />
         </Route>
       </Routes>

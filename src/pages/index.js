@@ -4,3 +4,4 @@ export { SignUp } from "./signup/SignUp";
 export { NotesHome } from "./notes-home/NotesHome";
 export { Profile } from "./Profile/Profile";
 export { Archive } from "./archive/Archive";
+export { Trash } from "./trash/Trash";

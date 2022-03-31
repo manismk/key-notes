@@ -26,10 +26,12 @@ export const Sidebar = () => {
           <p className="sidebar--title">Archive</p>
         </div>
       </Link>
-      <div className="sidebar--item">
-        <DeleteOutline className="icon icon--md" />
-        <p className="sidebar--title">Trash</p>
-      </div>
+      <Link to="/app/trash">
+        <div className="sidebar--item">
+          <DeleteOutline className="icon icon--md" />
+          <p className="sidebar--title">Trash</p>
+        </div>
+      </Link>
     </aside>
   );
 };
