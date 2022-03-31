@@ -8,7 +8,7 @@ import {
 } from "@mui/icons-material";
 import "./notes.css";
 import parse from "html-react-parser";
-import { archiveNote, toggleIsPinned } from "../../utils";
+import { archiveNote, toggleIsPinned } from "../../services";
 import { useAuth } from "../../context";
 import { ColorButton } from "../";
 import { NotesForm } from "../";

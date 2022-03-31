@@ -1,7 +1,12 @@
 import { useAuth } from "../../context";
 import parse from "html-react-parser";
-import { Delete, Unarchive } from "@mui/icons-material";
-import { unArchiveNote } from "../../utils";
+import {
+  Delete,
+  DeleteForever,
+  RestoreFromTrash,
+  Unarchive,
+} from "@mui/icons-material";
+import { unArchiveNote } from "../../services";
 
 export const OtherNote = ({ note, isArchived, isTrashed }) => {
   const { user } = useAuth();
@@ -14,16 +19,28 @@ export const OtherNote = ({ note, isArchived, isTrashed }) => {
         <div></div>
         <div className="tools--container">
           {isArchived && (
-            <button
-              className="btn icon--btn "
-              onClick={() => unArchiveNote(note, user.uid)}
-            >
-              <Unarchive />
-            </button>
+            <>
+              <button
+                className="btn icon--btn "
+                onClick={() => unArchiveNote(note, user.uid)}
+              >
+                <Unarchive />
+              </button>
+              <button className="btn icon--btn ">
+                <Delete />
+              </button>
+            </>
           )}
-          <button className="btn icon--btn ">
-            <Delete />
-          </button>
+          {isTrashed && (
+            <>
+              <button className="btn icon--btn ">
+                <RestoreFromTrash />
+              </button>
+              <button className="btn icon--btn ">
+                <DeleteForever />
+              </button>
+            </>
+          )}
         </div>
       </div>
     </div>

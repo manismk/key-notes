@@ -1,4 +1,4 @@
-import { handleBgColorChange } from "../../../utils";
+import { handleBgColorChange } from "../../../services";
 
 export const ColorContainer = ({
   uid,

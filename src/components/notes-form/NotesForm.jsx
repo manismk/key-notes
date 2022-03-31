@@ -3,7 +3,8 @@ import "./notesForm.css";
 import "react-quill/dist/quill.snow.css";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../context";
-import { addNotes, handleNotesValidation, updateNotes } from "../../utils/";
+import { addNotes, updateNotes } from "../../services";
+import { handleNotesValidation } from "../../utils";
 import { Label, PushPin, PushPinOutlined } from "@mui/icons-material";
 import { ColorButton } from "../color-button/ColorButton";
 

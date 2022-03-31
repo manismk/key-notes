@@ -5,7 +5,7 @@ export const OtherNotes = () => {
   const { notes } = useNotes();
   return (
     <>
-      <h2 className="text--center">Other Notes</h2>
+      <h2 className="text--center">UnPinned Notes</h2>
       {notes
         .filter((note) => !note.isPinned)
         .map((note) => (
