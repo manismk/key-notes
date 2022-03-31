@@ -8,7 +8,7 @@ import {
 } from "@mui/icons-material";
 import "./notes.css";
 import parse from "html-react-parser";
-import { toggleIsPinned } from "../../utils";
+import { archiveNote, toggleIsPinned } from "../../utils";
 import { useAuth } from "../../context";
 import { ColorButton } from "../";
 import { NotesForm } from "../";
@@ -47,7 +47,10 @@ export const Notes = ({ note }) => {
               editNoteData={note}
             />
           )}
-          <button className="btn icon--btn ">
+          <button
+            className="btn icon--btn "
+            onClick={() => archiveNote(note, user.uid)}
+          >
             <Archive />
           </button>
           <button className="btn icon--btn ">

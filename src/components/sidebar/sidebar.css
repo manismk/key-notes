@@ -4,6 +4,10 @@
   position: fixed;
 }
 
+.sidebar a {
+  text-decoration: none;
+}
+
 .sidebar--item {
   display: flex;
   align-items: center;
@@ -15,6 +19,7 @@
   padding: 0.2rem 0.8rem;
   margin: 1.2rem 0;
   width: fit-content;
+  color: var(--black);
 }
 
 .icon.icon--md {
