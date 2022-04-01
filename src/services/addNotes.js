@@ -9,6 +9,7 @@ export const addNotes = (notesData, uid) => {
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       isPinned: notesData.isPinned,
       isArchived: false,
+      isTrashed: false,
       color: notesData.color,
     });
   } catch (e) {

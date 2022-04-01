@@ -1,0 +1,54 @@
+.multiselect {
+  max-width: 10rem;
+  position: relative;
+}
+
+.selectBox {
+  cursor: pointer;
+}
+
+.selectBox select {
+  width: 100%;
+  font-weight: bold;
+  padding: 0.3rem;
+}
+
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.multiselect .checkboxes {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 2rem;
+  bottom: 0;
+  z-index: 35;
+}
+
+.checkboxes.open {
+  display: block;
+}
+
+.checkboxes.close {
+  display: none;
+}
+
+.multiselect .checkboxes label {
+  display: block;
+  background-color: var(--white);
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.2rem 0.4rem;
+}
+
+.multiselect .checkboxes label:hover {
+  background-color: var(--info-dark);
+  color: var(--white);
+}
