@@ -1,12 +1,16 @@
 import { db } from "../firebase";
 
-export const updateNotes = (notesData, uid) => {
+export const updateNotes = (
+  { id, title, enteredNotes, isPinned, color },
+  uid
+) => {
+  console.log(id);
   try {
-    db.collection(`users/${uid}/notes`).doc(notesData.id).update({
-      title: notesData.title,
-      enteredNotes: notesData.enteredNotes,
-      isPinned: notesData.isPinned,
-      color: notesData.color,
+    db.collection(`users/${uid}/notes`).doc(id).update({
+      title: title,
+      enteredNotes: enteredNotes,
+      isPinned: isPinned,
+      color: color,
     });
   } catch (e) {
     console.error("Error updating data : ", e);

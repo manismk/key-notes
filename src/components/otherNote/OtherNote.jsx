@@ -6,7 +6,12 @@ import {
   RestoreFromTrash,
   Unarchive,
 } from "@mui/icons-material";
-import { unArchiveNote } from "../../services";
+import {
+  deletePermanently,
+  moveToTrash,
+  restoreFromTrash,
+  unArchiveNote,
+} from "../../services";
 
 export const OtherNote = ({ note, isArchived, isTrashed }) => {
   const { user } = useAuth();
@@ -26,17 +31,26 @@ export const OtherNote = ({ note, isArchived, isTrashed }) => {
               >
                 <Unarchive />
               </button>
-              <button className="btn icon--btn ">
+              <button
+                className="btn icon--btn "
+                onClick={() => moveToTrash(note, user.uid)}
+              >
                 <Delete />
               </button>
             </>
           )}
           {isTrashed && (
             <>
-              <button className="btn icon--btn ">
+              <button
+                className="btn icon--btn "
+                onClick={() => restoreFromTrash(note, user.uid)}
+              >
                 <RestoreFromTrash />
               </button>
-              <button className="btn icon--btn ">
+              <button
+                className="btn icon--btn "
+                onClick={() => deletePermanently(note, user.uid)}
+              >
                 <DeleteForever />
               </button>
             </>

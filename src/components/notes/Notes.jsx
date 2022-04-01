@@ -8,7 +8,7 @@ import {
 } from "@mui/icons-material";
 import "./notes.css";
 import parse from "html-react-parser";
-import { archiveNote, toggleIsPinned } from "../../services";
+import { archiveNote, moveToTrash, toggleIsPinned } from "../../services";
 import { useAuth } from "../../context";
 import { ColorButton } from "../";
 import { NotesForm } from "../";
@@ -17,6 +17,8 @@ import { useState } from "react";
 export const Notes = ({ note }) => {
   const { user } = useAuth();
   const [showForm, setForm] = useState(false);
+  // console.log(note.createdDate.toDate());
+  const createdDate = note.createdAt.toDate();
 
   return (
     <div className={`notes bg--${note.color}`}>
@@ -29,7 +31,12 @@ export const Notes = ({ note }) => {
         {note.isPinned ? <PushPin /> : <PushPinOutlined />}
       </button>
       <div className="notes--toolbar">
-        <div></div>
+        <div className="created--time">
+          Created At
+          {` ${createdDate.getDate()}-${
+            createdDate.getMonth() + 1
+          }-${createdDate.getFullYear()}`}
+        </div>
         <div className="tools--container">
           <button className="btn icon--btn ">
             <Label />
@@ -53,7 +60,10 @@ export const Notes = ({ note }) => {
           >
             <Archive />
           </button>
-          <button className="btn icon--btn ">
+          <button
+            className="btn icon--btn "
+            onClick={() => moveToTrash(note, user.uid)}
+          >
             <Delete />
           </button>
         </div>

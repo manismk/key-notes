@@ -56,6 +56,7 @@ body {
 
 .cta--container .btn {
   width: fit-content;
+  padding: 0.8rem;
 }
 
 .link--primary {

@@ -17,6 +17,7 @@ const NotesProvider = ({ children }) => {
     try {
       db.collection(`users/${user.uid}/notes`)
         .where("isArchived", "==", false)
+        .where("isTrashed", "==", false)
         .onSnapshot((querySnapshot) => {
           setNotes(
             querySnapshot.docs.map((note) => ({
@@ -25,16 +26,24 @@ const NotesProvider = ({ children }) => {
             }))
           );
         });
-      db.collection(`users/${user.uid}/archives`).onSnapshot(
-        (querySnapshot) => {
+      db.collection(`users/${user.uid}/archives`)
+        .where("isTrashed", "==", false)
+        .onSnapshot((querySnapshot) => {
           setOtherNotes((prev) => ({
             ...prev,
             archivedNotes: querySnapshot.docs.map((note) => ({
               ...note.data(),
             })),
           }));
-        }
-      );
+        });
+      db.collection(`users/${user.uid}/trashes`).onSnapshot((querySnapshot) => {
+        setOtherNotes((prev) => ({
+          ...prev,
+          trashedNotes: querySnapshot.docs.map((note) => ({
+            ...note.data(),
+          })),
+        }));
+      });
     } catch (e) {
       console.log("Error in getting initial notes data", e);
     }
