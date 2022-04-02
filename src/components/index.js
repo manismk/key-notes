@@ -11,3 +11,4 @@ export { ColorButton } from "./color-button/ColorButton";
 export { OtherNote } from "./otherNote/OtherNote";
 export { LabelContainer } from "./label/LabelContainer";
 export { LabelMultiSelect } from "./label-multiselect/LabelMultiSelect";
+export { DeleteModal } from "./delete-modal/DeleteModal";
