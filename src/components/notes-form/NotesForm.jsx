@@ -6,7 +6,7 @@ import { useAuth } from "../../context";
 import { addNotes, updateNotes } from "../../services";
 import { handleNotesValidation } from "../../utils";
 import { Label, PushPin, PushPinOutlined } from "@mui/icons-material";
-import { ColorButton } from "../color-button/ColorButton";
+import { ColorButton, LabelMultiSelect } from "../";
 
 const modules = {
   toolbar: [
@@ -86,9 +86,7 @@ export const NotesForm = ({ closeForm, isFromEdit, editNoteData }) => {
         </div>
         <div className="form--cta">
           <div className="toolbar">
-            <button className="btn icon--btn ">
-              <Label />
-            </button>
+            <LabelMultiSelect color={notesData.color} />
             <ColorButton
               isFromForm={true}
               handleFormColorChange={(color) => {

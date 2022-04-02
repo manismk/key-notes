@@ -4,7 +4,6 @@ export const updateNotes = (
   { id, title, enteredNotes, isPinned, color },
   uid
 ) => {
-  console.log(id);
   try {
     db.collection(`users/${uid}/notes`).doc(id).update({
       title: title,

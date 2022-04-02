@@ -11,6 +11,8 @@
   width: 100%;
   font-weight: bold;
   padding: 0.3rem;
+  border-radius: 5px;
+  border: 1px solid var(--black);
 }
 
 .overSelect {
@@ -25,7 +27,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  top: 2rem;
+  top: 1.8rem;
   bottom: 0;
   z-index: 35;
 }
@@ -40,7 +42,6 @@
 
 .multiselect .checkboxes label {
   display: block;
-  background-color: var(--white);
   font-size: 0.8rem;
   display: flex;
   align-items: center;

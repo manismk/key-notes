@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { useNotes } from "../../context";
 import "./multiSelect.css";
-export const LabelMultiSelect = () => {
+export const LabelMultiSelect = ({ color }) => {
   const [showDropdown, setDropdown] = useState(false);
   const { labels } = useNotes();
 
   return (
     <div className="multiselect">
       <div className="selectBox" onClick={() => setDropdown((prev) => !prev)}>
-        <select>
+        <select className={`bg--${color}`}>
           <option>Select Label</option>
         </select>
         <div className="overSelect"></div>
@@ -19,7 +19,7 @@ export const LabelMultiSelect = () => {
       >
         {labels.length ? (
           labels.map((label) => (
-            <label key={label}>
+            <label key={label} className={`bg--${color}`}>
               <input type="checkbox" />
               {label}
             </label>

@@ -15,7 +15,7 @@ import { useState } from "react";
 export const Notes = ({ note }) => {
   const { user } = useAuth();
   const [showForm, setForm] = useState(false);
-  const createdDate = note.createdAt.toDate();
+  const createdDate = note.createdAt?.toDate();
 
   return (
     <div className={`notes bg--${note.color}`}>
@@ -30,12 +30,13 @@ export const Notes = ({ note }) => {
       <div className="notes--toolbar">
         <div className="created--time">
           Created At
-          {` ${createdDate.getDate()}-${
-            createdDate.getMonth() + 1
-          }-${createdDate.getFullYear()}`}
+          {createdDate &&
+            ` ${createdDate.getDate()}-${
+              createdDate.getMonth() + 1
+            }-${createdDate.getFullYear()}`}
         </div>
         <div className="tools--container">
-          <LabelMultiSelect />
+          <LabelMultiSelect color={note.color} />
           <ColorButton uid={user.uid} noteId={note.id} isFromForm={false} />
           <button className="btn icon--btn " onClick={() => setForm(true)}>
             <Edit />
