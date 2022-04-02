@@ -54,7 +54,7 @@ body {
   flex-direction: column;
 }
 
-.cta--container .btn {
+.cta--container .home--cta {
   width: fit-content;
   padding: 0.8rem;
 }

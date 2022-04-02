@@ -17,12 +17,16 @@ export const LabelMultiSelect = () => {
         className={`checkboxes ${showDropdown ? "open" : "close"}`}
         onMouseLeave={() => setDropdown(false)}
       >
-        {labels.map((label) => (
-          <label>
-            <input type="checkbox" />
-            {label}
-          </label>
-        ))}
+        {labels.length ? (
+          labels.map((label) => (
+            <label key={label}>
+              <input type="checkbox" />
+              {label}
+            </label>
+          ))
+        ) : (
+          <label>No label found</label>
+        )}
       </div>
     </div>
   );
