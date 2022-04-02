@@ -1,15 +1,87 @@
 import { Delete, Done, Edit } from "@mui/icons-material";
 import { useState } from "react";
 import { useAuth, useNotes } from "../../context";
-import { handleLabel } from "../../services";
+import { handleLabel, handleLabelChange } from "../../services";
+import { DeleteModal } from "../";
 
-export const LabelItem = ({ labelData }) => {
+const removeLabelFromAllNotes = (currentLabel, notes, otherNotes, uid) => {
+  notes.map((note) => {
+    handleLabelChange(
+      [...note.selectedLabels.filter((label) => label !== currentLabel)],
+      uid,
+      note.id
+    );
+  });
+  otherNotes.archivedNotes.map((archiveNote) => {
+    handleLabelChange(
+      [...archiveNote.selectedLabels.filter((label) => label !== currentLabel)],
+      uid,
+      archiveNote.id,
+      "archive"
+    );
+  });
+  otherNotes.trashedNotes.map((trashNote) => {
+    handleLabelChange(
+      [...trashNote.selectedLabels.filter((label) => label !== currentLabel)],
+      uid,
+      trashNote.id,
+      "trash"
+    );
+  });
+};
+const changeLabelInAllNotes = (
+  currentLabel,
+  newValue,
+  notes,
+  otherNotes,
+  uid
+) => {
+  notes.map((note) => {
+    handleLabelChange(
+      [
+        ...note.selectedLabels.map((label) =>
+          label === currentLabel ? newValue : label
+        ),
+      ],
+      uid,
+      note.id
+    );
+  });
+  otherNotes.archivedNotes.map((archiveNote) => {
+    handleLabelChange(
+      [
+        ...archiveNote.selectedLabels.map((label) =>
+          label === currentLabel ? newValue : label
+        ),
+      ],
+      uid,
+      archiveNote.id,
+      "archive"
+    );
+  });
+  otherNotes.trashedNotes.map((trashNote) => {
+    handleLabelChange(
+      [
+        ...trashNote.selectedLabels.map((label) =>
+          label === currentLabel ? newValue : label
+        ),
+      ],
+      uid,
+      trashNote.id,
+      "trash"
+    );
+  });
+};
+
+export const LabelItem = ({ labelData: currentLabel }) => {
   const [isEditing, setEditing] = useState(false);
   const [editData, setEditData] = useState({
     error: "",
-    enteredValue: labelData,
+    enteredValue: currentLabel,
   });
-  const { labels } = useNotes();
+  const [showModal, setShowModal] = useState(false);
+
+  const { labels, notes, otherNotes } = useNotes();
   const { user } = useAuth();
 
   const changeHandler = (e) => {
@@ -24,12 +96,28 @@ export const LabelItem = ({ labelData }) => {
     handleLabel(
       [
         ...labels.map((label) =>
-          label === labelData ? editData.enteredValue : label
+          label === currentLabel ? editData.enteredValue : label
         ),
       ],
       user.uid
     );
+    changeLabelInAllNotes(
+      currentLabel,
+      editData.enteredValue,
+      notes,
+      otherNotes,
+      user.uid
+    );
     setEditing(false);
+  };
+
+  const deleteLabel = () => {
+    handleLabel(
+      [...labels.filter((label) => label !== currentLabel)],
+      user.uid
+    );
+    removeLabelFromAllNotes(currentLabel, notes, otherNotes, user.uid);
+    setShowModal(false);
   };
 
   const clickHandler = () => {
@@ -39,10 +127,9 @@ export const LabelItem = ({ labelData }) => {
     if (isPresentAlready.length === 0) {
       editLabel();
     } else {
-      editData.enteredValue === labelData && setEditing(false);
-      editData.enteredValue.toLowerCase() === labelData.toLowerCase() &&
+      editData.enteredValue.toLowerCase() === currentLabel.toLowerCase() &&
         editLabel();
-      editData.enteredValue !== labelData &&
+      editData.enteredValue !== currentLabel &&
         setEditData((prev) => ({
           ...prev,
           error: "Label already present",
@@ -54,7 +141,7 @@ export const LabelItem = ({ labelData }) => {
     <>
       <div className="label--item">
         {!isEditing ? (
-          <p>{labelData}</p>
+          <p>{currentLabel}</p>
         ) : (
           <input
             type="text"
@@ -70,12 +157,7 @@ export const LabelItem = ({ labelData }) => {
             </button>
             <button
               className="btn icon--btn"
-              onClick={() => {
-                handleLabel(
-                  [...labels.filter((label) => label !== labelData)],
-                  user.uid
-                );
-              }}
+              onClick={() => setShowModal(true)}
             >
               <Delete />
             </button>
@@ -91,6 +173,13 @@ export const LabelItem = ({ labelData }) => {
         )}
       </div>
       <p className="error-text">{editData.error}</p>
+      {showModal && (
+        <DeleteModal
+          closeModal={() => setShowModal(false)}
+          deleteLabel={deleteLabel}
+          labelName={currentLabel}
+        />
+      )}
     </>
   );
 };

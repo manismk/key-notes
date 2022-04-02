@@ -27,16 +27,28 @@ export const Notes = ({ note }) => {
       >
         {note.isPinned ? <PushPin /> : <PushPinOutlined />}
       </button>
+      {note.selectedLabels.length > 0 && (
+        <div className="label--data--container">
+          {note.selectedLabels.map((label) => (
+            <span key={label} className="label--text">
+              {label}
+            </span>
+          ))}
+        </div>
+      )}
       <div className="notes--toolbar">
         <div className="created--time">
-          Created At
           {createdDate &&
-            ` ${createdDate.getDate()}-${
+            `Created At ${createdDate.getDate()}-${
               createdDate.getMonth() + 1
             }-${createdDate.getFullYear()}`}
         </div>
         <div className="tools--container">
-          <LabelMultiSelect color={note.color} />
+          <LabelMultiSelect
+            color={note.color}
+            selectedLabels={note.selectedLabels}
+            id={note.id}
+          />
           <ColorButton uid={user.uid} noteId={note.id} isFromForm={false} />
           <button className="btn icon--btn " onClick={() => setForm(true)}>
             <Edit />

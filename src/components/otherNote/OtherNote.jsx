@@ -19,7 +19,15 @@ export const OtherNote = ({ note, isArchived, isTrashed }) => {
     <div className={`notes bg--${note.color}`}>
       <div className="notes--title">{note.title}</div>
       <div className="notes--content">{parse(note.enteredNotes)}</div>
-
+      {note.selectedLabels.length > 0 && (
+        <div className="label--data--container">
+          {note.selectedLabels.map((label) => (
+            <span key={label} className="label--text">
+              {label}
+            </span>
+          ))}
+        </div>
+      )}
       <div className="notes--toolbar">
         <div></div>
         <div className="tools--container">

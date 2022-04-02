@@ -11,6 +11,7 @@ export const addNotes = (notesData, uid) => {
       isArchived: false,
       isTrashed: false,
       color: notesData.color,
+      selectedLabels: notesData.selectedLabels,
     });
   } catch (e) {
     console.error("Error adding document: ", e);
