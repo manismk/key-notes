@@ -7,3 +7,4 @@ export { updateNotes } from "./updateNotes";
 export { moveToTrash } from "./moveToTrash";
 export { restoreFromTrash } from "./restoreFromTrash";
 export { deletePermanently } from "./deletePermanently";
+export { handleLabel } from "./handleLabel";

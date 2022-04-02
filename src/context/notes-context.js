@@ -12,6 +12,7 @@ const NotesProvider = ({ children }) => {
     archivedNotes: [],
     trashedNotes: [],
   });
+  const [labels, setLabels] = useState([]);
 
   useEffect(() => {
     try {
@@ -44,13 +45,20 @@ const NotesProvider = ({ children }) => {
           })),
         }));
       });
+      db.collection(`users/${user.uid}/labels`).onSnapshot((querySnapshot) => {
+        setLabels(
+          querySnapshot.docs.map((userId) => userId.data().label).length
+            ? querySnapshot.docs.map((userId) => userId.data().label)[0]
+            : []
+        );
+      });
     } catch (e) {
       console.log("Error in getting initial notes data", e);
     }
   }, [user.uid]);
 
   return (
-    <NotesContext.Provider value={{ notes, otherNotes }}>
+    <NotesContext.Provider value={{ notes, otherNotes, labels }}>
       {children}
     </NotesContext.Provider>
   );

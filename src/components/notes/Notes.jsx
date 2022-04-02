@@ -2,7 +2,6 @@ import {
   Archive,
   Delete,
   Edit,
-  Label,
   PushPin,
   PushPinOutlined,
 } from "@mui/icons-material";
@@ -10,14 +9,12 @@ import "./notes.css";
 import parse from "html-react-parser";
 import { archiveNote, moveToTrash, toggleIsPinned } from "../../services";
 import { useAuth } from "../../context";
-import { ColorButton } from "../";
-import { NotesForm } from "../";
+import { ColorButton, LabelMultiSelect, NotesForm } from "../";
 import { useState } from "react";
 
 export const Notes = ({ note }) => {
   const { user } = useAuth();
   const [showForm, setForm] = useState(false);
-  // console.log(note.createdDate.toDate());
   const createdDate = note.createdAt.toDate();
 
   return (
@@ -38,9 +35,7 @@ export const Notes = ({ note }) => {
           }-${createdDate.getFullYear()}`}
         </div>
         <div className="tools--container">
-          <button className="btn icon--btn ">
-            <Label />
-          </button>
+          <LabelMultiSelect />
           <ColorButton uid={user.uid} noteId={note.id} isFromForm={false} />
           <button className="btn icon--btn " onClick={() => setForm(true)}>
             <Edit />

@@ -9,3 +9,5 @@ export { PinnedNotes } from "./pinned-notes/PinnedNotes";
 export { OtherNotes } from "./unpinned-notes/UnPinnedNotes";
 export { ColorButton } from "./color-button/ColorButton";
 export { OtherNote } from "./otherNote/OtherNote";
+export { LabelContainer } from "./label/LabelContainer";
+export { LabelMultiSelect } from "./label-multiselect/LabelMultiSelect";

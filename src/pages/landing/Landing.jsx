@@ -20,7 +20,7 @@ export const Landing = () => {
           </div>
           <div className="cta--container">
             <button
-              className="btn btn--primary"
+              className="btn btn--primary home--cta"
               onClick={() => {
                 navigate("/signup");
               }}
