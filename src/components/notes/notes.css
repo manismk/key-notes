@@ -15,7 +15,7 @@
 }
 
 .notes--toolbar {
-  margin: 1rem 0 0 1rem;
+  margin-top: 0.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -84,4 +84,20 @@
 .created--time {
   font-size: 0.8rem;
   font-style: italic;
+}
+
+.label--data--container {
+  padding: 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.label--data--container .label--text {
+  background-color: var(--grey-text);
+  font-size: 0.8rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 1rem;
+  color: var(--white);
 }

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../../context";
 import { addNotes, updateNotes } from "../../services";
 import { handleNotesValidation } from "../../utils";
-import { Label, PushPin, PushPinOutlined } from "@mui/icons-material";
+import { PushPin, PushPinOutlined } from "@mui/icons-material";
 import { ColorButton, LabelMultiSelect } from "../";
 
 const modules = {
@@ -22,6 +22,7 @@ const initialData = {
   isPinned: false,
   color: "white",
   error: "",
+  selectedLabels: [],
 };
 
 export const NotesForm = ({ closeForm, isFromEdit, editNoteData }) => {
@@ -84,9 +85,34 @@ export const NotesForm = ({ closeForm, isFromEdit, editNoteData }) => {
             }}
           />
         </div>
+        <div className="label--data--container">
+          {notesData.selectedLabels.map((label) => (
+            <span key={label} className="label--text">
+              {label}
+            </span>
+          ))}
+        </div>
         <div className="form--cta">
           <div className="toolbar">
-            <LabelMultiSelect color={notesData.color} />
+            <LabelMultiSelect
+              color={notesData.color}
+              isFromForm={true}
+              selectedLabels={notesData.selectedLabels}
+              handleFormLabelChange={(value, checkedState) => {
+                checkedState &&
+                  setNotesData((prev) => ({
+                    ...prev,
+                    selectedLabels: [...prev.selectedLabels, value],
+                  }));
+                !checkedState &&
+                  setNotesData((prev) => ({
+                    ...prev,
+                    selectedLabels: prev.selectedLabels.filter(
+                      (label) => label !== value
+                    ),
+                  }));
+              }}
+            />
             <ColorButton
               isFromForm={true}
               handleFormColorChange={(color) => {

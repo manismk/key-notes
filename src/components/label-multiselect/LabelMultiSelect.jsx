@@ -1,9 +1,28 @@
 import { useState } from "react";
-import { useNotes } from "../../context";
+import { useAuth, useNotes } from "../../context";
+import { handleLabelChange } from "../../services";
 import "./multiSelect.css";
-export const LabelMultiSelect = ({ color }) => {
+
+export const LabelMultiSelect = ({
+  color,
+  isFromForm,
+  selectedLabels,
+  handleFormLabelChange,
+  id,
+}) => {
   const [showDropdown, setDropdown] = useState(false);
   const { labels } = useNotes();
+  const { user } = useAuth();
+
+  const changeHandler = (value, checkedState) => {
+    checkedState && handleLabelChange([...selectedLabels, value], user.uid, id);
+    !checkedState &&
+      handleLabelChange(
+        [...selectedLabels.filter((label) => label !== value)],
+        user.uid,
+        id
+      );
+  };
 
   return (
     <div className="multiselect">
@@ -20,7 +39,17 @@ export const LabelMultiSelect = ({ color }) => {
         {labels.length ? (
           labels.map((label) => (
             <label key={label} className={`bg--${color}`}>
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                value={label}
+                checked={selectedLabels.includes(label)}
+                onChange={(e) => {
+                  isFromForm &&
+                    handleFormLabelChange(e.target.value, e.target.checked);
+                  !isFromForm &&
+                    changeHandler(e.target.value, e.target.checked);
+                }}
+              />
               {label}
             </label>
           ))
