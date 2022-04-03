@@ -1,7 +1,7 @@
 import { db } from "../firebase";
 
 export const updateNotes = (
-  { id, title, enteredNotes, isPinned, color, selectedLabels },
+  { id, title, enteredNotes, isPinned, color, selectedLabels, priority },
   uid
 ) => {
   try {
@@ -11,6 +11,7 @@ export const updateNotes = (
       isPinned: isPinned,
       color: color,
       selectedLabels: selectedLabels,
+      priority: priority,
     });
   } catch (e) {
     console.error("Error updating data : ", e);

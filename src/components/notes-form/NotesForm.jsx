@@ -7,6 +7,7 @@ import { addNotes, updateNotes } from "../../services";
 import { handleNotesValidation } from "../../utils";
 import { PushPin, PushPinOutlined } from "@mui/icons-material";
 import { ColorButton, LabelMultiSelect } from "../";
+import { PriorityDropdown } from "../priority-dropdown/PriorityDropdown";
 
 const modules = {
   toolbar: [
@@ -23,6 +24,7 @@ const initialData = {
   color: "white",
   error: "",
   selectedLabels: [],
+  priority: "high",
 };
 
 export const NotesForm = ({ closeForm, isFromEdit, editNoteData }) => {
@@ -75,6 +77,7 @@ export const NotesForm = ({ closeForm, isFromEdit, editNoteData }) => {
             }}
           />
         </div>
+        <span className="priority--label">{notesData.priority}</span>
         <div className="editor">
           <ReactQuill
             placeholder="Add your notes here"
@@ -94,6 +97,14 @@ export const NotesForm = ({ closeForm, isFromEdit, editNoteData }) => {
         </div>
         <div className="form--cta">
           <div className="toolbar">
+            <PriorityDropdown
+              color={notesData.color}
+              isFromForm={true}
+              selected={notesData.priority}
+              handleFormPriorityChange={(value) =>
+                setNotesData((prev) => ({ ...prev, priority: value }))
+              }
+            />
             <LabelMultiSelect
               color={notesData.color}
               isFromForm={true}

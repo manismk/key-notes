@@ -3,16 +3,13 @@
   position: relative;
 }
 
-.selectBox {
-  cursor: pointer;
-}
-
-.selectBox select {
-  width: 100%;
+select {
+  max-width: 100%;
   font-weight: bold;
   padding: 0.3rem;
   border-radius: 5px;
   border: 1px solid var(--black);
+  cursor: pointer;
 }
 
 .overSelect {

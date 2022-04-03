@@ -11,6 +11,7 @@ import { archiveNote, moveToTrash, toggleIsPinned } from "../../services";
 import { useAuth } from "../../context";
 import { ColorButton, LabelMultiSelect, NotesForm } from "../";
 import { useState } from "react";
+import { PriorityDropdown } from "../priority-dropdown/PriorityDropdown";
 
 export const Notes = ({ note }) => {
   const { user } = useAuth();
@@ -27,6 +28,7 @@ export const Notes = ({ note }) => {
       >
         {note.isPinned ? <PushPin /> : <PushPinOutlined />}
       </button>
+      <span className="priority--label">{note?.priority}</span>
       {note.selectedLabels.length > 0 && (
         <div className="label--data--container">
           {note.selectedLabels.map((label) => (
@@ -44,6 +46,11 @@ export const Notes = ({ note }) => {
             }-${createdDate.getFullYear()}`}
         </div>
         <div className="tools--container">
+          <PriorityDropdown
+            selected={note?.priority}
+            id={note.id}
+            color={note.color}
+          />
           <LabelMultiSelect
             color={note.color}
             selectedLabels={note.selectedLabels}
