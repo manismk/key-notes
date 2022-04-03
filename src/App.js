@@ -7,21 +7,27 @@ import {
   NotesHome,
   Profile,
   SignUp,
+  SingleLabel,
   Trash,
 } from "./pages";
+import { routes } from "./constant";
 
 const App = () => {
   return (
     <div className="App container--100">
       <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signUp" element={<SignUp />} />
+        <Route path={routes.LANDING_PAGE} element={<Landing />} />
+        <Route path={routes.LOGIN_PAGE} element={<Login />} />
+        <Route path={routes.SIGNUP_PAGE} element={<SignUp />} />
         <Route element={<PrivateRoute />}>
-          <Route path="/app/notes" element={<NotesHome />} />
-          <Route path="/app/archive" element={<Archive />} />
-          <Route path="/app/trash" element={<Trash />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path={routes.HOME_PAGE} element={<NotesHome />} />
+          <Route path={routes.ARCHIVE_PAGE} element={<Archive />} />
+          <Route path={routes.TRASH_PAGE} element={<Trash />} />
+          <Route path={routes.PROFILE_PAGE} element={<Profile />} />
+          <Route
+            path={`${routes.LABEL_PAGE}/:labelId`}
+            element={<SingleLabel />}
+          />
         </Route>
       </Routes>
     </div>
