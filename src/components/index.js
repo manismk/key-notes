@@ -6,7 +6,7 @@ export { Notes } from "./notes/Notes";
 export { NotesForm } from "./notes-form/NotesForm";
 export { PrivateRoute } from "./PrivateRoute/PrivateRoute";
 export { PinnedNotes } from "./pinned-notes/PinnedNotes";
-export { OtherNotes } from "./unpinned-notes/UnPinnedNotes";
+export { UnPinnedNotes } from "./unpinned-notes/UnPinnedNotes";
 export { ColorButton } from "./color-button/ColorButton";
 export { OtherNote } from "./otherNote/OtherNote";
 export { LabelContainer } from "./label/LabelContainer";

@@ -1,8 +1,6 @@
-import { useNotes } from "../../context";
 import { Notes } from "../notes/Notes";
 
-export const OtherNotes = () => {
-  const { notes } = useNotes();
+export const UnPinnedNotes = ({ notes }) => {
   return (
     <>
       <h2 className="text--center">UnPinned Notes</h2>

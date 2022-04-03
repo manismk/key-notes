@@ -8,6 +8,7 @@ export const Archive = () => {
     <>
       <Navbar />
       <div className="main--container">
+        <h2 className="text--center">Archived Notes</h2>
         <div className="notes--container">
           {otherNotes.archivedNotes.length
             ? otherNotes.archivedNotes.map((note) => (
