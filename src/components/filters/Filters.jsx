@@ -2,19 +2,19 @@ import { filterActions } from "../../constant";
 import { useFilter } from "../../context";
 import "./filter.css";
 
-const changeHandler = (e, filterDispatch) => {
-  filterDispatch({
-    type: filterActions.PRIORITY_CHANGE,
-    payload: { priority: e.target.value },
-  });
-};
-
 const priorityData = [
   { id: "priorityAll", value: "all", labelName: "All" },
   { id: "priorityHigh", value: "high", labelName: "High" },
   { id: "PriorityMedium", value: "medium", labelName: "Medium" },
   { id: "priorityLow", value: "low", labelName: "Low" },
 ];
+
+const changeHandler = (e, filterDispatch) => {
+  filterDispatch({
+    type: filterActions.PRIORITY_CHANGE,
+    payload: { priority: e.target.value },
+  });
+};
 
 export const Filters = () => {
   const { filterState, filterDispatch } = useFilter();
@@ -42,7 +42,7 @@ export const Filters = () => {
       <div className="priority--container">
         <p>Priority</p>
         {priorityData.map((priority) => (
-          <span>
+          <span key={priority.id}>
             <input
               type="radio"
               id={priority.id}
