@@ -1,5 +1,4 @@
 .label--container {
-  width: 40%;
   max-height: 60vh;
   overflow-x: auto;
 }
@@ -38,10 +37,4 @@
   justify-content: space-between;
   padding: 0.5rem 0;
   gap: 1rem;
-}
-
-@media only screen and (max-width: 768px) {
-  .label--container {
-    width: 60%;
-  }
 }

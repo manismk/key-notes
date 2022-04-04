@@ -11,6 +11,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .priority--radio {
@@ -27,4 +28,10 @@
 .priority--radio:checked + .radio--label {
   background-color: var(--primary--color);
   color: var(--white);
+}
+
+@media only screen and (max-width: 480px) {
+  .filter--container {
+    margin: 1rem;
+  }
 }

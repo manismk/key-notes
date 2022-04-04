@@ -33,23 +33,41 @@
 .form--cta {
   display: flex;
   justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
 }
 
 .form--cta .toolbar {
   display: flex;
   align-items: center;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .form--cta .cta--container {
   display: flex;
   gap: 1rem;
-  flex-wrap: wrap;
+  align-items: center;
   flex-direction: row;
 }
 
+@media only screen and (max-width: 800px) {
+  .form--container {
+    width: 80%;
+  }
+}
+
 @media only screen and (max-width: 600px) {
+  .form--cta {
+    flex-wrap: wrap;
+  }
   .form--container {
     width: 85%;
+    max-height: 80vh;
+    overflow-x: auto;
+  }
+
+  .form--container .btn {
+    padding: 0.5rem;
   }
 }

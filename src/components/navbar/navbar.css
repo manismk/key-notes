@@ -40,8 +40,22 @@
   flex-direction: row;
 }
 
+.nav--container .cta--container a {
+  color: black;
+}
+
 @media only screen and (max-width: 600px) {
   .nav--container .hamburger {
     display: inline-block;
+  }
+
+  .nav--container {
+    padding: 1rem;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .nav--container .btn--primary {
+    padding: 0.5rem;
   }
 }

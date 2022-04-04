@@ -1,11 +1,18 @@
 .sidebar {
-  margin: 1rem;
+  margin: 1rem 0;
   max-width: 12rem;
   position: fixed;
+  overflow-y: auto;
+  top: 0;
+  z-index: 20;
+  padding-top: 12vh;
+  bottom: 0;
+  background-color: var(--white);
 }
 
 .sidebar a {
   text-decoration: none;
+  color: var(--black);
 }
 
 .sidebar--item {
@@ -16,49 +23,79 @@
   font-weight: 500;
   cursor: pointer;
   border-radius: 5px;
-  padding: 0.2rem 0.8rem;
-  margin: 1.2rem 0;
-  width: fit-content;
-  color: var(--black);
+  padding: 0.5rem 0.8rem;
+  margin: 1rem 1.2rem;
+  background-color: inherit;
+  color: inherit;
+  width: 75%;
 }
 
 .icon.icon--md {
   font-size: 1.4rem;
 }
 
-.sidebar--item:hover {
+.sidebar .sidebar--item:hover {
   background-color: var(--primary--light);
+}
+
+.sidebar .active .sidebar--item:hover {
+  background-color: var(--primary--color);
 }
 
 .sidebar--title {
   letter-spacing: -0.7px;
 }
 
-@media only screen and (max-width: 600px) {
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background-color: var(--primary--light);
+  border: 1px solid var(--primary--color);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary--color);
+  border-radius: 5px;
+}
+
+@media only screen and (max-width: 768px) {
   .icon.icon--md {
     font-size: 1.8rem;
   }
   .sidebar {
-    max-width: 5rem;
+    width: 5rem;
   }
 
   .sidebar--title {
     display: none;
   }
+  .sidebar--item {
+    margin: 1.2rem 0.3rem;
+  }
+  .open .sidebar--item {
+    margin: 1.2rem 0.3rem;
+    width: 90%;
+  }
 
   .open .sidebar {
-    position: fixed;
-    z-index: 20;
-    background-color: var(--white);
-    top: 0;
     margin: 0;
-    bottom: 0;
     padding: 1rem;
     padding-top: 15vh;
-    max-width: 15rem;
-    overflow-y: auto;
+    width: 17rem;
   }
   .open .sidebar--title {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .sidebar {
+    display: none;
+  }
+  .open .sidebar {
     display: block;
   }
 }

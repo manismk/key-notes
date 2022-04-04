@@ -19,17 +19,21 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .tools--container {
   display: flex;
   gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .pin--btn {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 0.5rem;
+  right: 0.5rem;
 }
 
 .notes * {
@@ -113,4 +117,11 @@
   color: var(--white);
   padding: 3px 6px;
   letter-spacing: 1.5px;
+}
+
+@media only screen and (max-width: 480px) {
+  .notes {
+    margin: 1rem;
+    width: 95%;
+  }
 }
