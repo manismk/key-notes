@@ -1,0 +1,30 @@
+.filter--container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 1rem 2rem;
+}
+
+.priority--container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.priority--radio {
+  display: none;
+}
+
+.radio--label {
+  padding: 0.2rem 0.6rem;
+  border-radius: 2rem;
+  background-color: var(--primary--light);
+  border: 1px solid var(--primary--color);
+}
+
+.priority--radio:checked + .radio--label {
+  background-color: var(--primary--color);
+  color: var(--white);
+}
