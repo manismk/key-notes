@@ -8,3 +8,9 @@ export const routes = {
   LOGIN_PAGE: "/login",
   SIGNUP_PAGE: "/signup",
 };
+
+export const filterActions = {
+  NOTES_CHANGE: "NOTES_CHANGE",
+  SORT_CHANGE: "SORT_CHANGE",
+  PRIORITY_CHANGE: "PRIORITY_CHANGE",
+};
