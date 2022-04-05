@@ -91,7 +91,7 @@ export const NotesForm = ({ closeForm, isFromEdit, editNoteData }) => {
             }}
           />
         </div>
-        {notesData.error.length ? (
+        {notesData.error?.length ? (
           <p className="error-text">{notesData.error}</p>
         ) : (
           ""
