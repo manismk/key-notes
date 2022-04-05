@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { PrivateRoute } from "./components";
 import {
   Archive,
+  Error404,
   Landing,
   Login,
   NotesHome,
@@ -29,6 +30,7 @@ const App = () => {
             element={<SingleLabel />}
           />
         </Route>
+        <Route path="*" element={<Error404 />} />
       </Routes>
     </div>
   );

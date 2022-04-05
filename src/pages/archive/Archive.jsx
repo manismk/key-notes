@@ -1,8 +1,8 @@
-import { Navbar, OtherNote } from "../../components";
+import { Loader, Navbar, OtherNote } from "../../components";
 import { useNotes } from "../../context";
 
 export const Archive = () => {
-  const { otherNotes } = useNotes();
+  const { otherNotes, loading } = useNotes();
 
   return (
     <>
@@ -16,6 +16,7 @@ export const Archive = () => {
               ))
             : "No archive notes found"}
         </div>
+        {loading && <Loader />}
       </div>
     </>
   );

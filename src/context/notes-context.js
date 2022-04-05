@@ -13,8 +13,10 @@ const NotesProvider = ({ children }) => {
     trashedNotes: [],
   });
   const [labels, setLabels] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     try {
       db.collection(`users/${user.uid}/notes`)
         .where("isArchived", "==", false)
@@ -26,6 +28,7 @@ const NotesProvider = ({ children }) => {
               ...note.data(),
             }))
           );
+          setLoading(false);
         });
       db.collection(`users/${user.uid}/archives`)
         .where("isTrashed", "==", false)
@@ -36,6 +39,7 @@ const NotesProvider = ({ children }) => {
               ...note.data(),
             })),
           }));
+          setLoading(false);
         });
       db.collection(`users/${user.uid}/trashes`).onSnapshot((querySnapshot) => {
         setOtherNotes((prev) => ({
@@ -44,6 +48,7 @@ const NotesProvider = ({ children }) => {
             ...note.data(),
           })),
         }));
+        setLoading(false);
       });
       db.collection(`users/${user.uid}/labels`).onSnapshot((querySnapshot) => {
         setLabels(
@@ -51,14 +56,16 @@ const NotesProvider = ({ children }) => {
             ? querySnapshot.docs.map((userId) => userId.data().label)[0]
             : []
         );
+        setLoading(false);
       });
     } catch (e) {
       console.log("Error in getting initial notes data", e);
+      setLoading(false);
     }
   }, [user.uid]);
 
   return (
-    <NotesContext.Provider value={{ notes, otherNotes, labels }}>
+    <NotesContext.Provider value={{ notes, otherNotes, labels, loading }}>
       {children}
     </NotesContext.Provider>
   );

@@ -2,6 +2,7 @@ export { InputTextBox } from "./input/InputTextBox";
 export { InputPassword } from "./input/InputPassword";
 export { Navbar } from "./navbar/Navbar";
 export { Sidebar } from "./sidebar/Sidebar";
+export { Loader } from "./loader/Loader";
 export { Notes } from "./notes/Notes";
 export { NotesForm } from "./notes-form/NotesForm";
 export { PrivateRoute } from "./PrivateRoute/PrivateRoute";

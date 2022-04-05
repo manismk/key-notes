@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
+  Loader,
   Navbar,
   OtherNote,
   PinnedNotes,
@@ -10,7 +11,7 @@ import { useNotes } from "../../context";
 
 export const SingleLabel = () => {
   const params = useParams();
-  const { notes, otherNotes } = useNotes();
+  const { notes, otherNotes, loading } = useNotes();
   const [labelNotes, setLabelNotes] = useState({
     notes: [],
     archivedNotes: [],
@@ -75,6 +76,7 @@ export const SingleLabel = () => {
             hasArchivedNotes === 0 &&
             "No Notes Found For This Label"}
         </div>
+        {loading && <Loader />}
       </div>
     </div>
   );

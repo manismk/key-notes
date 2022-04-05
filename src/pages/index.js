@@ -6,3 +6,4 @@ export { Profile } from "./Profile/Profile";
 export { Archive } from "./archive/Archive";
 export { Trash } from "./trash/Trash";
 export { SingleLabel } from "./singleLabel/SingleLabel";
+export { Error404 } from "./error404/Error404";

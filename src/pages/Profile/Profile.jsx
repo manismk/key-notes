@@ -1,11 +1,13 @@
 import { useAuth } from "../../context/auth-context";
 import "./profile.css";
+import { Navbar } from "../../components/";
 
 export const Profile = () => {
   const { user, signOut } = useAuth();
 
   return (
     <>
+      <Navbar />
       <main>
         <div className="user--container">
           <h1 className="heading--3 text--center">My Account</h1>

@@ -1,8 +1,8 @@
-import { Navbar, OtherNote } from "../../components";
+import { Loader, Navbar, OtherNote } from "../../components";
 import { useNotes } from "../../context";
 
 export const Trash = () => {
-  const { otherNotes } = useNotes();
+  const { otherNotes, loading } = useNotes();
 
   return (
     <>
@@ -16,6 +16,7 @@ export const Trash = () => {
               ))
             : "No trashed notes found"}
         </div>
+        {loading && <Loader />}
       </div>
     </>
   );

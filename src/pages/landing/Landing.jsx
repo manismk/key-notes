@@ -14,8 +14,9 @@ export const Landing = () => {
           <div className="content--description">
             <p className="tagline"> Get organized. Remember everything </p>
             <p>
-              Manage your daily tasks and workflow in a modern way and boost
-              your efficiency without any efforts.
+              KeyNotes is a digital Notes manager. Manage your notes and
+              workflow in a modern way and boost your efficiency without any
+              efforts.
             </p>
           </div>
           <div className="cta--container">

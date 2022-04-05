@@ -42,7 +42,6 @@ export const NotesForm = ({ closeForm, isFromEdit, editNoteData }) => {
     );
     if (error.length) {
       setNotesData((prev) => ({ ...prev, error: error }));
-      alert(error); // change to toast later
     }
     if (error.length === 0) {
       !isFromEdit && addNotes(notesData, user.uid);
@@ -73,7 +72,11 @@ export const NotesForm = ({ closeForm, isFromEdit, editNoteData }) => {
             placeholder="Add Notes Title here"
             value={notesData.title}
             onChange={(e) => {
-              setNotesData((prev) => ({ ...prev, title: e.target.value }));
+              setNotesData((prev) => ({
+                ...prev,
+                title: e.target.value,
+                error: "",
+              }));
             }}
           />
         </div>
@@ -84,10 +87,15 @@ export const NotesForm = ({ closeForm, isFromEdit, editNoteData }) => {
             modules={modules}
             value={notesData.enteredNotes}
             onChange={(e) => {
-              setNotesData((prev) => ({ ...prev, enteredNotes: e }));
+              setNotesData((prev) => ({ ...prev, enteredNotes: e, error: "" }));
             }}
           />
         </div>
+        {notesData.error.length ? (
+          <p className="error-text">{notesData.error}</p>
+        ) : (
+          ""
+        )}
         <div className="label--data--container">
           {notesData.selectedLabels.map((label) => (
             <span key={label} className="label--text">
