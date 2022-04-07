@@ -9,10 +9,11 @@
 
 ## Table of Contents
 1. [Features](#Features)
-2. [Todo](#todo)
-3. [Demo](#demo)
-4. [Reference](#reference)
-5. [Author](#author)
+2. [Run Locally](#Run Locally)
+3. [Todo](#todo)
+4. [Demo](#demo)
+5. [Reference](#reference)
+6. [Author](#author)
 
 ---
 
@@ -94,6 +95,17 @@
 **Backend**
 - Backend is done with the help of firebase
 
+
+---
+
+## Run Locally
+
+```git
+$ git clone https://github.com/manismk/key-notes.git
+$ cd key-notes
+$ npm install
+$ npm start  
+```
 
 ---
 
