@@ -92,7 +92,7 @@
 - Loaders and toast is provided as the acknowledgment to the users
 
 **Backend**
-- Backend is done with the hel of firebase
+- Backend is done with the help of firebase
 
 
 ---
@@ -106,7 +106,7 @@
 
 ## Demo
 
-![Jstees Demo](key-notes.gif)
+![key Notes Demo](key-notes.gif)
 
 ---
 
