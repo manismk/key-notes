@@ -12,6 +12,7 @@ export const ColorButton = ({
   return (
     <div
       className="color--wrapper"
+      onClick={() => setShowColor((prev) => !prev)}
       onMouseOver={() => setShowColor(true)}
       onMouseLeave={() => setShowColor(false)}
     >

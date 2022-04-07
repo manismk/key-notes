@@ -13,6 +13,8 @@ import {
 } from "./pages";
 import { routes } from "./constant";
 import { useEffect } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   const location = useLocation();
@@ -39,6 +41,14 @@ const App = () => {
         </Route>
         <Route path="*" element={<Error404 />} />
       </Routes>
+      <ToastContainer
+        position="top-right"
+        pauseOnHover={true}
+        autoClose={800}
+        newestOnTop={true}
+        limit={2}
+        style={{ top: "5rem" }}
+      />
     </div>
   );
 };

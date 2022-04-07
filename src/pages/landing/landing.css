@@ -88,3 +88,9 @@ body {
     margin: 1rem;
   }
 }
+
+@media only screen and (max-width: 500px) {
+  .Toastify__toast-container .Toastify__toast {
+    margin: 1rem;
+  }
+}

@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
+import { toast } from "react-toastify";
 
 const AuthContext = createContext();
 
@@ -30,9 +31,11 @@ const AuthProvider = ({ children }) => {
       .then((response) => {
         setUser(response.user);
         navigate(from, { replace: true });
+        toast.success("Signed Up Successfully");
       })
       .catch((e) => {
         console.log("Error in signUp", e);
+        toast.error(e.message);
       });
   };
 
@@ -42,9 +45,11 @@ const AuthProvider = ({ children }) => {
       .then((response) => {
         setUser(response.user);
         navigate(from, { replace: true });
+        toast.success("Logged In Successfully");
       })
       .catch((e) => {
         console.log("Error in signIn", e);
+        toast.error(e.message);
       });
   };
 
