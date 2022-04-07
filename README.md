@@ -9,7 +9,7 @@
 
 ## Table of Contents
 1. [Features](#Features)
-2. [Run Locally](#Run Locally)
+2. [Run Locally](#run-locally)
 3. [Todo](#todo)
 4. [Demo](#demo)
 5. [Reference](#reference)
