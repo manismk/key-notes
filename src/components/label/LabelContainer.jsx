@@ -77,7 +77,7 @@ export const LabelContainer = ({ closeForm }) => {
         <p className="error-text">{labelData.error}</p>
         {labels.length ? (
           <div className="m-t-1">
-            <p className="heading--5 text--center m-b-1">Added Labels</p>
+            <p className="heading--5 text--center m-t-2">Added Labels</p>
             {labels.map((label) => (
               <LabelItem labelData={label} key={label} />
             ))}

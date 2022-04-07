@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { PrivateRoute } from "./components";
 import {
   Archive,
@@ -12,8 +12,15 @@ import {
   Trash,
 } from "./pages";
 import { routes } from "./constant";
+import { useEffect } from "react";
 
 const App = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   return (
     <div className="App container--100">
       <Routes>

@@ -1,16 +1,31 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Sidebar, NotesForm } from "../";
 import "./navbar.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Person, Menu } from "@mui/icons-material";
 
 export const Navbar = () => {
   const [showSidebar, setSidebar] = useState(false);
   const [showForm, setForm] = useState(false);
+  const { pathname } = useLocation();
 
   const toggleSidebar = () => {
     setSidebar((prev) => !prev);
   };
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 768) setSidebar(false);
+    });
+
+    return () =>
+      window.removeEventListener("resize", () => {
+        if (window.innerWidth >= 768) setSidebar(false);
+      });
+  });
+  useEffect(() => {
+    setSidebar(false);
+  }, [pathname]);
 
   return (
     <>

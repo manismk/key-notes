@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 
 const AuthContext = createContext();
@@ -8,6 +8,8 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/app/notes";
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -27,7 +29,7 @@ const AuthProvider = ({ children }) => {
       .createUserWithEmailAndPassword(email, password)
       .then((response) => {
         setUser(response.user);
-        navigate("/app/notes");
+        navigate(from, { replace: true });
       })
       .catch((e) => {
         console.log("Error in signUp", e);
@@ -39,7 +41,7 @@ const AuthProvider = ({ children }) => {
       .signInWithEmailAndPassword(email, password)
       .then((response) => {
         setUser(response.user);
-        navigate("/app/notes");
+        navigate(from, { replace: true });
       })
       .catch((e) => {
         console.log("Error in signIn", e);
