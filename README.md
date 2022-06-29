@@ -1,70 +1,144 @@
-# Getting Started with Create React App
+# Key-Notes - Get organized. Remember everything
+**KeyNotes is a digital Notes manager. Manage your notes and workflow in a modern way and boost your efficiency without any efforts.**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Take a look at [Key Notes](https://key-notes.netlify.app/)**
 
-## Available Scripts
+[![Netlify Status](https://api.netlify.com/api/v1/badges/6fe2b50a-6401-4ad3-adab-780deb7bb405/deploy-status)](https://app.netlify.com/sites/key-notes/deploys)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Table of Contents
+1. [Features](#Features)
+2. [Run Locally](#run-locally)
+3. [Todo](#todo)
+4. [Demo](#demo)
+5. [Reference](#reference)
+6. [Author](#author)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+**Login** 
+- User able to login by entering email and password
+- User can use guest credentials to login
+- Form validation is done for login fields
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Sign Up**
+- User able to create account and signup for the site
+- Form validation is done for signup fields
 
-### `npm run build`
+**Landing page**
+- Landing page with Buttons to go to login or signup
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Notes Home page**
+- It list all the Notes stored by the user other than archive and trash notes
+- Has a button to create Note, edit Note and Add labels
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**Create Note**
+- User can click create Note button and on Form will appear in the modal
+- Where they can give the Title and description for a note
+- User can also choose the priority, pin, label and color for the Note
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Rich Text Editor**
+- Rich text Editor is used for Notes container. 
+- So You apply the basic styling for the Note from the editor
 
-### `npm run eject`
+**Edit Note**
+- User can click edit icon button on each note to edit the particular note.
+- It will be opened in the same editor and form
+- All the functionalities such as Title, notes, priority, pin, label and color for the Note can be Edited
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**Pin Feature**
+- Pin Feature is used to pin the important notes and it will appear at the top
+- pin/unpin can be done both on while creating the note and after the creation also
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Color change**
+- User can change the color of each notes based on the provided colors
+- color change can be done both on while creating the note and after the creation also
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+**Priority**
+- Priority can be given to notes as High, Medium and Low
+- color change can be done both on while creating the note and after the creation also
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+**Label**
+- You can add the label using Add label button on the sidebar
+- All the Added label will be shown on the Notes Form and Each Note.
+- You can Edit the label and it will be updated on the all the notes for which the particular label has been used
+- You can Delete the label and the particular label will be removed from all the notes
 
-## Learn More
+**Filter**
+- You can sort the notes based on the time it has been added.
+- You can also filter the notes based on the priority
+- For each label the label will be added to the side bar and you can click that and see the notes tagged with that particular label
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+**Archive Notes**
+- Archive button will be shown on each notes
+- You can unarchive the note from the archive notes
+- You can also delete the note from archive notes page
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Trash Note**
+- Trash button will be shown on each notes
+- You can Retrive the trashed notes from the Trash Page
+- You can also permenantly delete the Note from the trash page
 
-### Code Splitting
+**Profile page**
+- User profile page with email id of the user
+- Button to logout from the app.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+**Private Routes**
+- All the user specific routes are made as private routes and can be accessed only after login
 
-### Analyzing the Bundle Size
+**Loaders and Toasts**
+- Loaders and toast is provided as the acknowledgment to the users
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+**Backend**
+- Backend is done with the help of firebase
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## Run Locally
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```git
+$ git clone https://github.com/manismk/key-notes.git
+$ cd key-notes
+$ npm install
+$ npm start  
+```
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Todo
 
-### `npm run build` fails to minify
+- Search Functionality
+- Add more feature to the Editor
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+## Demo
+
+![key Notes Demo](key-notes.gif)
+
+---
+
+## Reference
+
+Resources that help in building jstees includes
+
+1. [React Js](https://reactjs.org/)
+2. [React Router](https://reactrouter.com/)
+3. [Google Fonts](https://fonts.google.com/)
+4. [Material Icons](https://mui.com/components/material-icons/)
+5. [Firebase](https://firebase.google.com/)
+6. [React toastify](https://fkhadra.github.io/react-toastify/introduction)
+7. [React Quill Text Editor](https://zenoamaro.github.io/react-quill/)
+8. [Fastart component library](https://fastart.netlify.app/)
+
+---
+
+## Author
+
+- [Manikandan](https://manikandan.netlify.app/)
+- [Twitter](https://twitter.com/_manismk)
+- [Linkedin](https://www.linkedin.com/in/manismk/)
