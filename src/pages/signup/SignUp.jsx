@@ -142,12 +142,6 @@ export const SignUp = () => {
             }}
           />
 
-          <div className="remember--container m-t-1 m-h-1">
-            <span className="input--standard">
-              <input type="checkbox" id="remember" />
-              <label htmlFor="remember">Accept to terms & conditions</label>
-            </span>
-          </div>
           <div className="m-t-1 m-h-1">
             <button
               className="btn btn--primary w-100"
